@@ -1,0 +1,87 @@
+{# /app/templates/security/login.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+{% block stylesheets %}
+    <style>
+        #simpleform {
+            width:600px;
+            border:2px solid grey;
+            padding:14px;
+        }
+        #simpleform label {
+            font-size:14px;
+            float:left;
+            width:300px;
+            text-align:right;
+            display:block;
+        }
+        #simpleform span {
+            font-size:11px;
+            color:grey;
+            width:100px;
+            text-align:right;
+            display:block;
+        }
+        #simpleform input {
+            border:1px solid grey;
+            font-family:verdana;
+            font-size:14px;
+            color: blue;
+            height:24px;
+            width:250px;
+            margin: 0 0 10px 10px;
+        }
+        #simpleform textarea {
+            border:1px solid grey;
+            font-family:verdana;
+            font-size:14px;
+            color: blue;
+            height:120px;
+            width:250px;
+            margin: 0 0 20px 10px;
+        }
+        #simpleform select {
+            margin: 0 0 20px 10px;
+        }
+        #simpleform button {
+            clear:both;
+            margin-left:250px;
+            background: grey;
+            color:#FFFFFF;
+            border:solid 1px #666666;
+            font-size:16px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <br/>
+    <a href="{{ path('home') }}"><< HOME</a>
+    <br/><br/>
+    <div id = "simpleform">
+        <h1>Please sign in</h1>
+
+
+        <form method="post">
+            {# If there's any error, display it to the user #}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {# Email Input #}
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+
+            {# Password Input #}
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+            {# CSRF Token Input #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+
+            <button class="btn btn-lg btn-primary" type="submit">
+                Sign in
+            </button>
+        </form>
+    </div>
+{% endblock %}

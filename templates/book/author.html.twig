@@ -1,0 +1,30 @@
+{% extends "./base.html.twig" %}
+
+{% block title %}Book Store{% endblock %}
+{% block stylesheets %}
+    <style>
+        .table { border-collapse: collapse; }
+        .table th, td {
+            border-bottom: 1px solid #ddd;
+            width: 350px;
+            text-align: left;
+            padding-left: 300px;
+            align: left;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <h1><center> Book Store Application ! </center></h1>
+
+    <br>
+    <table class = "table">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+            <tr>
+                <td><a href ="{{ path("register") }}" > Register</a></td>
+                <td><a href ="{{ path("login") }}" > Login</a></td>
+            </tr>
+    </table>
+{% endblock %}
